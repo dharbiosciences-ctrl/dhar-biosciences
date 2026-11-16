@@ -1,0 +1,1555 @@
+<title>Dhar Biosciences</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Dhar Biosciences discovers and develops medicines and mesenchymal stem cell therapies for diseases that need better treatments.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..700&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400..700&display=swap">
+<style>
+/* Layout: the screening plate is the organizing image. The hero pairs the thesis with a live 384-well read on a dark
+   instrument panel; sections below follow the discovery sequence; the page closes on the same instrument surface. */
+:root {
+  --paper: #F5F5F9;
+  --surface: #FFFFFF;
+  --ink: #1C1630;
+  --ink-soft: #565170;
+  --line: #DFDDE8;
+  --accent: #157570;
+  --accent-strong: #0E5753;
+  --accent-ink: #FFFFFF;
+  --accent-soft: #E2F0EE;
+  --instrument: #16121F;
+  --instrument-line: #2D2739;
+  --instrument-fg: #ECE9F4;
+  --instrument-muted: #9F99B3;
+  --hit: #FDE725;
+  --viridis: linear-gradient(90deg, #440154, #482878, #3E4A89, #31688E, #26828E, #1F9E89, #35B779, #6DCD59, #B4DE2C, #FDE725);
+  --shadow: 0 40px 80px -40px rgb(28 22 48 / 0.5);
+
+  --font-display: "Bricolage Grotesque", "Instrument Sans", system-ui, sans-serif;
+  --font-body: "Instrument Sans", system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+  --fs-label: 0.75rem;
+  --fs-sm: 0.9375rem;
+  --fs-base: 1.0625rem;
+  --fs-lede: 1.1875rem;
+  --fs-h3: 1.25rem;
+  --fs-h2: clamp(1.875rem, 1.3rem + 2.2vw, 3rem);
+  --fs-hero: clamp(2.5rem, 1.5rem + 4.4vw, 4.75rem);
+
+  --gutter: clamp(16px, 4vw, 40px);
+  --radius: 16px;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #0E0B15;
+    --surface: #15111E;
+    --ink: #EDEAF5;
+    --ink-soft: #A9A4BD;
+    --line: #2A2537;
+    --accent: #3FC1B0;
+    --accent-strong: #6CD8C9;
+    --accent-ink: #06201D;
+    --accent-soft: #10302C;
+    --instrument: #1A1526;
+    --instrument-line: #322B42;
+    --shadow: 0 40px 80px -40px rgb(0 0 0 / 0.8);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #0E0B15;
+  --surface: #15111E;
+  --ink: #EDEAF5;
+  --ink-soft: #A9A4BD;
+  --line: #2A2537;
+  --accent: #3FC1B0;
+  --accent-strong: #6CD8C9;
+  --accent-ink: #06201D;
+  --accent-soft: #10302C;
+  --instrument: #1A1526;
+  --instrument-line: #322B42;
+  --shadow: 0 40px 80px -40px rgb(0 0 0 / 0.8);
+  color-scheme: dark;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-body);
+  font-size: var(--fs-base);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px);
+  z-index: 10;
+  background: var(--paper);
+}
+h1, h2, h3, p, ul, ol, dl, dd, figure { margin: 0; }
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; border-radius: 6px; }
+.on-dark :focus-visible { outline-color: var(--instrument-fg); }
+section[id], main[id] { scroll-margin-top: 84px; }
+
+.wrap {
+  max-width: 1180px;
+  margin-inline: auto;
+  padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+  padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+}
+.sr-only {
+  position: absolute; width: 1px; height: 1px; padding: 0; margin: -1px;
+  overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; border: 0;
+}
+.skip {
+  position: absolute; left: 16px; top: -100px; z-index: 50;
+  background: var(--ink); color: var(--paper);
+  padding: 10px 16px; border-radius: 8px; text-decoration: none; font-weight: 600;
+}
+.skip:focus { top: calc(env(safe-area-inset-top, 0px) + 12px); }
+
+.eyebrow {
+  font-family: var(--font-mono);
+  font-size: var(--fs-label);
+  font-weight: 500;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+h2 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  font-weight: 600;
+  line-height: 1.08;
+  letter-spacing: -0.028em;
+  text-wrap: balance;
+}
+h3 {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.012em;
+  text-wrap: balance;
+}
+
+/* ---------- Header ---------- */
+.site-head {
+  position: sticky;
+  top: env(safe-area-inset-top, 0px);
+  z-index: 9;
+  background: var(--paper);
+  background: color-mix(in srgb, var(--paper) 86%, transparent);
+  -webkit-backdrop-filter: saturate(1.4) blur(14px);
+  backdrop-filter: saturate(1.4) blur(14px);
+  border-bottom: 1px solid transparent;
+  transition: border-color 0.2s ease;
+}
+.site-head.scrolled { border-bottom-color: var(--line); }
+.head-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  min-height: 70px;
+}
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  text-decoration: none;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 1.125rem;
+  letter-spacing: -0.012em;
+  white-space: nowrap;
+}
+.brand b { font-weight: 700; }
+.brand span { font-weight: 400; }
+.logo {
+  display: block;
+  flex: none;
+  width: 36px;
+  height: 36px;
+  object-fit: cover;
+  clip-path: circle(47% at 50% 50%);
+}
+
+.nav { display: flex; align-items: center; gap: 2px; }
+.nav a {
+  color: var(--ink-soft);
+  text-decoration: none;
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  padding: 8px 13px;
+  border-radius: 999px;
+  transition: color 0.15s ease, background-color 0.15s ease;
+}
+.nav a:hover { color: var(--ink); background: var(--accent-soft); }
+.nav a.nav-cta { color: var(--paper); background: var(--ink); margin-left: 8px; }
+.nav a.nav-cta:hover { background: var(--accent); color: var(--accent-ink); }
+.menu-btn {
+  display: none;
+  font: 500 var(--fs-sm) var(--font-body);
+  color: var(--ink);
+  background: transparent;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 8px 16px;
+  cursor: pointer;
+}
+@media (max-width: 1000px) {
+  .menu-btn { display: inline-flex; }
+  .site-head .nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 2px;
+    background: var(--paper);
+    border-bottom: 1px solid var(--line);
+    padding-block: 8px 16px;
+    padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+  }
+  .site-head.open .nav { display: flex; }
+  .site-head.open { border-bottom-color: var(--line); }
+  .nav a { padding: 12px 14px; font-size: var(--fs-base); }
+  .nav a.nav-cta { margin: 8px 0 0; text-align: center; }
+}
+
+/* ---------- Hero ---------- */
+.hero { padding-block: clamp(40px, 7vw, 96px) clamp(64px, 8vw, 112px); }
+.hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.12fr);
+  gap: clamp(36px, 5vw, 72px);
+  align-items: center;
+}
+.hero-copy { display: flex; flex-direction: column; gap: 22px; min-width: 0; }
+.hero h1 {
+  font-family: var(--font-display);
+  font-size: var(--fs-hero);
+  font-weight: 600;
+  line-height: 1.01;
+  letter-spacing: -0.038em;
+  text-wrap: balance;
+}
+.hero h1 .dot {
+  display: inline-block;
+  width: 0.16em;
+  height: 0.16em;
+  margin-left: 0.07em;
+  border-radius: 50%;
+  background: var(--accent);
+  box-shadow: 0 0 0 0.045em var(--paper), 0 0 0 0.085em var(--accent);
+}
+.lede { font-size: var(--fs-lede); line-height: 1.55; color: var(--ink-soft); max-width: 34em; }
+.actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 13px 22px;
+  border-radius: 999px;
+  border: 1px solid transparent;
+  font-size: var(--fs-sm);
+  font-weight: 600;
+  text-decoration: none;
+  transition: background-color 0.15s ease, border-color 0.15s ease, color 0.15s ease;
+}
+.btn .arrow { transition: transform 0.2s ease; }
+.btn:hover .arrow { transform: translateX(3px); }
+.btn-primary { background: var(--accent); color: var(--accent-ink); }
+.btn-primary:hover { background: var(--accent-strong); }
+.btn-ghost { border-color: var(--line); color: var(--ink); }
+.btn-ghost:hover { border-color: var(--ink); }
+
+/* Plate panel */
+.plate-card {
+  min-width: 0;
+  background: var(--instrument);
+  color: var(--instrument-fg);
+  border: 1px solid var(--instrument-line);
+  border-radius: 20px;
+  padding: clamp(14px, 2.2vw, 24px);
+  box-shadow: var(--shadow);
+}
+.plate-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+.plate-meta { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.plate-id { font: 500 0.875rem/1.3 var(--font-mono); }
+.plate-format { font: 400 var(--fs-label)/1.3 var(--font-mono); color: var(--instrument-muted); }
+.plate-run {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font: 500 var(--fs-label)/1 var(--font-mono);
+  color: var(--instrument-fg);
+  background: transparent;
+  border: 1px solid var(--instrument-line);
+  border-radius: 999px;
+  padding: 9px 14px;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+.plate-run::before {
+  content: "";
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--hit);
+}
+.plate-run:hover:not(:disabled) { border-color: var(--instrument-fg); }
+.plate-run:disabled { cursor: progress; color: var(--instrument-muted); }
+.plate-run:disabled::before { animation: blink 0.6s ease-in-out infinite alternate; }
+@keyframes blink { to { opacity: 0.25; } }
+.plate-stage { position: relative; touch-action: pan-y; }
+.plate-stage canvas { display: block; width: 100%; height: 300px; cursor: crosshair; }
+.tip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  background: var(--instrument-fg);
+  color: var(--instrument);
+  font: 500 var(--fs-label)/1.35 var(--font-mono);
+  padding: 6px 10px;
+  border-radius: 6px;
+  white-space: nowrap;
+  transform: translate(-50%, calc(-100% - 8px));
+  z-index: 2;
+}
+.tip.below { transform: translate(-50%, 8px); }
+.plate-foot {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-wrap: wrap;
+  gap: 16px 24px;
+  margin-top: 18px;
+  padding-top: 16px;
+  border-top: 1px solid var(--instrument-line);
+}
+.readout { display: flex; gap: clamp(20px, 3vw, 32px); }
+.readout dt {
+  font: 500 0.6875rem/1.2 var(--font-mono);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--instrument-muted);
+}
+.readout dd {
+  margin-top: 4px;
+  font: 600 1.375rem/1 var(--font-display);
+  font-variant-numeric: tabular-nums;
+  letter-spacing: -0.01em;
+}
+.scale { display: grid; grid-template-columns: auto 120px auto; align-items: center; gap: 8px; font: 400 0.6875rem/1 var(--font-mono); color: var(--instrument-muted); }
+.scale i { display: block; height: 8px; border-radius: 4px; background: var(--viridis); }
+.plate-card figcaption { margin-top: 14px; font-size: 0.8125rem; line-height: 1.5; color: var(--instrument-muted); }
+
+/* ---------- Sections ---------- */
+.section { padding-block: clamp(72px, 9vw, 128px); }
+.band { background: var(--surface); border-block: 1px solid var(--line); }
+.section-head { display: flex; flex-direction: column; gap: 16px; max-width: 46rem; margin-bottom: clamp(40px, 5vw, 64px); }
+.section-lede { font-size: 1.125rem; color: var(--ink-soft); max-width: 40em; }
+
+/* Approach: stage track */
+.stages {
+  --gap: clamp(24px, 3vw, 44px);
+  list-style: none;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--gap);
+}
+.stage { position: relative; display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.stage:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  top: 16px;
+  left: 44px;
+  right: calc(10px - var(--gap));
+  height: 1px;
+  background: var(--line);
+}
+.node {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1.5px solid var(--accent);
+  background: linear-gradient(to top, var(--accent) var(--fill), var(--surface) var(--fill));
+  margin-bottom: 10px;
+}
+.stage p { color: var(--ink-soft); font-size: var(--fs-sm); line-height: 1.6; }
+.deliverable { margin-top: auto; padding-top: 6px; font: 500 var(--fs-label)/1.4 var(--font-mono); color: var(--accent); }
+
+/* Science */
+.science-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.08fr);
+  gap: clamp(40px, 6vw, 88px);
+  align-items: start;
+}
+.science-copy { display: flex; flex-direction: column; gap: 20px; min-width: 0; }
+.science-copy > p { color: var(--ink-soft); max-width: 34em; }
+.measures { margin-top: 12px; border-top: 1px solid var(--line); }
+.measures div {
+  display: grid;
+  grid-template-columns: 8rem minmax(0, 1fr);
+  gap: 16px;
+  padding-block: 14px;
+  border-bottom: 1px solid var(--line);
+}
+.measures dt { font-weight: 600; }
+.measures dd { color: var(--ink-soft); font-size: var(--fs-sm); line-height: 1.55; padding-top: 1px; }
+.curve-card {
+  min-width: 0;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(16px, 2.4vw, 28px);
+}
+.legend { display: flex; flex-wrap: wrap; gap: 8px 22px; margin-bottom: 14px; font: 400 0.8125rem/1.3 var(--font-mono); color: var(--ink-soft); }
+.key { display: inline-flex; align-items: center; gap: 8px; }
+.key i { width: 10px; height: 10px; border-radius: 50%; background: var(--accent); }
+.key i.off { background: transparent; border: 1.5px solid var(--ink-soft); }
+.key b { color: var(--ink); font-weight: 500; }
+#curve { display: block; width: 100%; height: 320px; overflow: visible; }
+#curve .ax { font: 400 11.5px var(--font-mono); fill: var(--ink-soft); }
+#curve .ax-title { font: 500 11px var(--font-mono); fill: var(--ink-soft); letter-spacing: 0.04em; }
+#curve .grid { stroke: var(--line); stroke-width: 1; }
+#curve .axis { stroke: var(--ink-soft); stroke-width: 1; }
+#curve .c-target { fill: none; stroke: var(--accent); stroke-width: 2.5; stroke-linecap: round; }
+#curve .c-off { fill: none; stroke: var(--ink-soft); stroke-width: 2; stroke-linecap: round; }
+#curve .err-t { stroke: var(--accent); stroke-width: 1.25; }
+#curve .err-o { stroke: var(--ink-soft); stroke-width: 1.25; }
+#curve .pt-t { fill: var(--accent); stroke: var(--surface); stroke-width: 1.5; }
+#curve .pt-o { fill: var(--surface); stroke: var(--ink-soft); stroke-width: 1.5; }
+#curve .drop-t { stroke: var(--accent); stroke-width: 1; stroke-dasharray: 3 4; }
+#curve .drop-o { stroke: var(--ink-soft); stroke-width: 1; stroke-dasharray: 3 4; }
+#curve .win { stroke: var(--ink); stroke-width: 1.25; }
+#curve .win-head { fill: var(--ink); }
+#curve .win-label { font: 600 12px var(--font-mono); fill: var(--ink); }
+#curve .win-bg { fill: var(--surface); }
+.curve-card figcaption { margin-top: 12px; font-size: 0.8125rem; line-height: 1.5; color: var(--ink-soft); }
+
+/* Pipeline */
+.pipeline-wrap { --cols: 8rem minmax(0, 15rem) minmax(0, 1fr); }
+.pl-head {
+  display: grid;
+  grid-template-columns: var(--cols);
+  gap: 24px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--ink);
+  font: 500 0.6875rem/1.3 var(--font-mono);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.pl-phases { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.pl-phases span { padding-left: 10px; }
+.pipeline { list-style: none; padding: 0; }
+.pl-group { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; margin-bottom: 18px; }
+.pl-group span { font: 500 var(--fs-label)/1.3 var(--font-mono); letter-spacing: 0.04em; color: var(--ink-soft); }
+.pipeline + .pl-group { margin-top: clamp(48px, 6vw, 72px); }
+.program {
+  display: grid;
+  grid-template-columns: var(--cols);
+  gap: 24px;
+  align-items: center;
+  padding-block: 24px;
+  border-bottom: 1px solid var(--line);
+}
+.code { font: 500 1rem/1.2 var(--font-mono); letter-spacing: 0.01em; }
+.area { display: flex; flex-direction: column; gap: 2px; min-width: 0; }
+.area h4 { margin: 0; font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; line-height: 1.25; letter-spacing: -0.012em; }
+.area p { color: var(--ink-soft); font-size: var(--fs-sm); line-height: 1.4; }
+.track {
+  position: relative;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  background-image: linear-gradient(to right,
+    transparent calc(25% - 1px), var(--line) calc(25% - 1px), var(--line) 25%, transparent 25%,
+    transparent calc(50% - 1px), var(--line) calc(50% - 1px), var(--line) 50%, transparent 50%,
+    transparent calc(75% - 1px), var(--line) calc(75% - 1px), var(--line) 75%, transparent 75%);
+}
+.bar {
+  position: relative;
+  height: 10px;
+  width: calc((var(--stage) - 0.4) * 25%);
+  border-radius: 5px;
+  background: linear-gradient(90deg, var(--accent-soft), var(--accent));
+}
+.bar::after {
+  content: "";
+  position: absolute;
+  right: -8px;
+  top: 50%;
+  width: 16px;
+  height: 16px;
+  margin-top: -8px;
+  border-radius: 50%;
+  background: var(--paper);
+  border: 3px solid var(--accent);
+}
+.stage-name { font: 500 var(--fs-label)/1.3 var(--font-mono); color: var(--accent); }
+.program .stage-name {
+  position: absolute; width: 1px; height: 1px; margin: -1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap;
+}
+
+/* Partnering */
+.partner-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(28px, 4vw, 56px); }
+.partner { display: flex; flex-direction: column; gap: 12px; padding-top: 22px; border-top: 2px solid var(--ink); min-width: 0; }
+.partner p { color: var(--ink-soft); font-size: var(--fs-sm); line-height: 1.6; }
+.partner-cta { margin-top: clamp(36px, 5vw, 56px); }
+
+/* Careers */
+.careers-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(36px, 6vw, 88px); align-items: start; }
+.careers-copy { display: flex; flex-direction: column; gap: 18px; min-width: 0; }
+.careers-copy p { color: var(--ink-soft); max-width: 32em; }
+.careers-side { display: flex; flex-direction: column; gap: 24px; min-width: 0; }
+.roles { list-style: none; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
+.roles li {
+  font-size: var(--fs-sm);
+  font-weight: 500;
+  padding: 9px 16px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background: var(--surface);
+}
+.careers-side p { color: var(--ink-soft); }
+.inline-email { color: var(--ink); font-weight: 600; text-decoration-color: var(--accent); text-underline-offset: 3px; overflow-wrap: anywhere; }
+
+/* Contact + footer (instrument surface) */
+.on-dark { background: var(--instrument); color: var(--instrument-fg); }
+.contact {
+  position: relative;
+  overflow: hidden;
+  padding-block: clamp(72px, 9vw, 120px);
+}
+.contact::before {
+  content: "";
+  position: absolute;
+  inset: 0 0 0 45%;
+  background-image: radial-gradient(circle, var(--instrument-line) 2.4px, transparent 3px);
+  background-size: 22px 22px;
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 70%);
+  mask-image: linear-gradient(90deg, transparent, #000 70%);
+  pointer-events: none;
+}
+.contact .wrap { position: relative; display: flex; flex-direction: column; gap: 18px; }
+.contact .eyebrow { color: var(--hit); }
+.contact h2 { color: var(--instrument-fg); }
+.contact-lede { color: var(--instrument-muted); font-size: 1.125rem; }
+.email-row { display: flex; flex-wrap: wrap; align-items: center; gap: 14px 22px; margin-top: 14px; }
+.email {
+  font-family: var(--font-display);
+  font-size: clamp(1.5rem, 0.9rem + 3.2vw, 3.25rem);
+  font-weight: 600;
+  letter-spacing: -0.025em;
+  line-height: 1.1;
+  color: var(--instrument-fg);
+  text-decoration: none;
+  overflow-wrap: anywhere;
+  border-bottom: 2px solid var(--instrument-line);
+  transition: border-color 0.15s ease;
+}
+.email:hover { border-bottom-color: var(--hit); }
+.copy {
+  font: 500 var(--fs-label)/1 var(--font-mono);
+  color: var(--instrument-fg);
+  background: transparent;
+  border: 1px solid var(--instrument-line);
+  border-radius: 999px;
+  padding: 11px 16px;
+  cursor: pointer;
+  transition: border-color 0.15s ease;
+}
+.copy:hover { border-color: var(--instrument-fg); }
+.copy-status { font: 400 var(--fs-label)/1 var(--font-mono); color: var(--instrument-muted); min-height: 1em; }
+.site-foot { border-top: 1px solid var(--instrument-line); padding-block: 28px; }
+.foot-row { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 32px; }
+.site-foot .brand { color: var(--instrument-fg); font-size: 1rem; }
+.site-foot .logo { width: 32px; height: 32px; }
+.foot-nav { display: flex; flex-wrap: wrap; gap: 6px 22px; font-size: 0.875rem; }
+.foot-nav a { color: var(--instrument-muted); text-decoration: none; }
+.foot-nav a:hover { color: var(--instrument-fg); }
+.copyright { font: 400 var(--fs-label)/1.4 var(--font-mono); color: var(--instrument-muted); }
+
+/* Regenerative medicine */
+.msc-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: clamp(40px, 6vw, 88px);
+  align-items: start;
+}
+.msc-copy { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.msc-copy > p { color: var(--ink-soft); }
+.panel-card {
+  min-width: 0;
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: clamp(18px, 2.4vw, 28px);
+}
+.panel-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: baseline; gap: 4px 16px; margin-bottom: 22px; }
+.panel-title { font: 500 0.875rem/1.3 var(--font-mono); }
+.panel-sub { font: 400 var(--fs-label)/1.3 var(--font-mono); color: var(--ink-soft); }
+.markers { display: flex; flex-direction: column; gap: 26px; }
+.mk-group { display: flex; flex-direction: column; gap: 12px; }
+.mk-group-label {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid var(--line);
+  font: 500 0.6875rem/1.3 var(--font-mono);
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+}
+.pass { flex: none; padding: 3px 9px; border-radius: 999px; background: var(--accent-soft); color: var(--accent); letter-spacing: 0.04em; }
+.mk, .mk-axis { display: grid; grid-template-columns: 4.5rem minmax(0, 1fr) 3.5rem; gap: 14px; align-items: center; }
+.mk-name { font: 500 0.875rem/1.2 var(--font-mono); }
+.mk-track { position: relative; height: 8px; border-radius: 4px; background: var(--line); }
+.mk-track i { display: block; height: 100%; width: max(2px, calc(var(--v) * 1%)); border-radius: 4px; background: var(--accent); }
+.mk-track::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  bottom: -5px;
+  left: calc(var(--t) * 1%);
+  width: 2px;
+  margin-left: -1px;
+  border-radius: 1px;
+  background: var(--ink);
+}
+.mk-val { font: 400 0.8125rem/1.2 var(--font-mono); font-variant-numeric: tabular-nums; text-align: right; }
+.mk-axis { margin-top: -10px; font: 400 0.6875rem/1 var(--font-mono); color: var(--ink-soft); }
+.mk-axis .ticks { display: flex; }
+.mk-axis .ticks span { flex: 1; }
+.mk-axis .ticks span:nth-child(2) { text-align: center; }
+.mk-axis .ticks span:nth-child(3) { text-align: right; }
+.panel-card figcaption { margin-top: 22px; font-size: 0.8125rem; line-height: 1.5; color: var(--ink-soft); }
+.lineage {
+  display: grid;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 2fr);
+  gap: clamp(32px, 5vw, 64px);
+  align-items: start;
+  margin-top: clamp(64px, 8vw, 104px);
+  padding-top: clamp(32px, 4vw, 48px);
+  border-top: 1px solid var(--line);
+}
+.lineage-head { display: flex; flex-direction: column; gap: 12px; min-width: 0; }
+.lineage-head p { color: var(--ink-soft); font-size: var(--fs-sm); }
+.dishes { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); }
+.dishes li { display: flex; flex-direction: column; gap: 16px; min-width: 0; }
+.dish { width: min(100%, 220px); padding: 7px; border-radius: 50%; background: var(--paper); border: 1px solid var(--line); }
+.dish canvas { display: block; width: 100%; height: auto; aspect-ratio: 1; border-radius: 50%; }
+.dish-label { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+.dish-label strong { font-family: var(--font-display); font-size: 1.125rem; font-weight: 600; letter-spacing: -0.01em; }
+.dish-label span { font: 400 0.8125rem/1.45 var(--font-mono); color: var(--ink-soft); }
+.note {
+  max-width: 52rem;
+  margin-top: clamp(40px, 5vw, 64px);
+  padding: 16px 20px;
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--paper);
+  font-size: var(--fs-sm);
+  line-height: 1.6;
+  color: var(--ink-soft);
+}
+.note strong { color: var(--ink); }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 980px) {
+  .hero-grid, .science-grid, .careers-grid, .msc-grid, .lineage { grid-template-columns: minmax(0, 1fr); }
+  .stages { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 48px; }
+  .stage:nth-child(2)::after { display: none; }
+}
+@media (max-width: 760px) {
+  .partner-grid { grid-template-columns: minmax(0, 1fr); }
+  .pl-head { display: none; }
+  .pipeline { border-top: 1px solid var(--ink); }
+  .program { grid-template-columns: minmax(0, 1fr); gap: 10px; }
+  .program .stage-name { position: static; width: auto; height: auto; margin: 0; overflow: visible; clip: auto; }
+  .measures div { grid-template-columns: minmax(0, 1fr); gap: 2px; }
+}
+@media (max-width: 600px) {
+  .stages { grid-template-columns: minmax(0, 1fr); row-gap: 36px; }
+  .stage { padding-left: 52px; }
+  .node { position: absolute; left: 0; top: 0; margin: 0; }
+  .stage::after, .stage:nth-child(2)::after {
+    display: block;
+    left: 16px;
+    right: auto;
+    top: 42px;
+    bottom: -26px;
+    width: 1px;
+    height: auto;
+  }
+  .stage:last-child::after { display: none; }
+  .scale { grid-template-columns: auto 88px auto; }
+  .dishes { grid-template-columns: minmax(0, 1fr); gap: 20px; }
+  .dishes li { flex-direction: row; align-items: center; }
+  .dish { width: 108px; flex: none; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { transition-duration: 0.01ms !important; animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; }
+}
+</style>
+
+<a class="skip" href="#main">Skip to content</a>
+
+<header class="site-head" id="head">
+  <div class="wrap head-row">
+    <a class="brand" href="#top" aria-label="Dhar Biosciences, back to top">
+      <img class="logo" src="assets/db-logo.jpg" alt="" width="36" height="36">
+      <span class="wordmark"><b>Dhar</b> <span>Biosciences</span></span>
+    </a>
+    <button class="menu-btn" id="menu-btn" type="button" aria-expanded="false" aria-controls="site-nav">Menu</button>
+    <nav class="nav" id="site-nav" aria-label="Main">
+      <a href="#approach">Approach</a>
+      <a href="#science">Science</a>
+      <a href="#regenerative">Cell therapy</a>
+      <a href="#pipeline">Pipeline</a>
+      <a href="#partner">Partnering</a>
+      <a href="#careers">Careers</a>
+      <a class="nav-cta" href="#contact">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+  <section class="hero" id="top">
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <p class="eyebrow">Drug discovery &amp; regenerative medicine</p>
+        <h1>From thousands of molecules to the few that matter<span class="dot" aria-hidden="true"></span></h1>
+        <p class="lede">Dhar Biosciences discovers and develops medicines for diseases that need better treatments. We pair strong disease biology with careful screening and medicinal chemistry, and we advance only the candidates the data supports.</p>
+        <div class="actions">
+          <a class="btn btn-primary" href="#partner">Partner with us <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="btn btn-ghost" href="#pipeline">See the pipeline</a>
+        </div>
+      </div>
+
+      <figure class="plate-card" aria-labelledby="plate-caption">
+        <div class="plate-head">
+          <div class="plate-meta">
+            <span class="plate-id" id="plate-id">Plate 05</span>
+            <span class="plate-format" id="plate-format">384-well primary screen · 10 µM</span>
+          </div>
+          <button class="plate-run" id="plate-run" type="button">Read new plate</button>
+        </div>
+        <div class="plate-stage" id="plate-stage">
+          <canvas id="plate" role="img" aria-label="Simulated screening plate heatmap"></canvas>
+          <div class="tip" id="plate-tip" hidden></div>
+        </div>
+        <div class="plate-foot">
+          <dl class="readout" aria-live="polite">
+            <div><dt>Hits</dt><dd id="s-hits">7</dd></div>
+            <div><dt>Hit rate</dt><dd id="s-rate">2.2%</dd></div>
+            <div><dt>Z′</dt><dd id="s-z">0.81</dd></div>
+          </dl>
+          <div class="scale" aria-hidden="true"><span>0</span><i></i><span>100% inhibition</span></div>
+        </div>
+        <figcaption id="plate-caption">Simulated primary screen. The outer columns hold positive and negative controls; a hit is any compound well at 50% inhibition or higher. Hover or tap a well to read it.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section band" id="approach">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow">Approach</p>
+        <h2>Every program earns its next step.</h2>
+        <p class="section-lede">Drug discovery is a long sequence of decisions. We define the evidence a program needs before it moves forward, and we hold to it.</p>
+      </header>
+      <ol class="stages">
+        <li class="stage" style="--fill: 25%">
+          <span class="node" aria-hidden="true"></span>
+          <h3>Target validation</h3>
+          <p>We start with targets that have strong human evidence linking them to disease, then confirm the biology in cell systems that reflect the patient.</p>
+          <span class="deliverable">→ Validated target</span>
+        </li>
+        <li class="stage" style="--fill: 50%">
+          <span class="node" aria-hidden="true"></span>
+          <h3>Hit finding</h3>
+          <p>We screen broadly and confirm carefully. Every hit is retested in dose response and checked in an orthogonal assay before chemistry begins.</p>
+          <span class="deliverable">→ Confirmed hit series</span>
+        </li>
+        <li class="stage" style="--fill: 75%">
+          <span class="node" aria-hidden="true"></span>
+          <h3>Lead optimization</h3>
+          <p>Medicinal chemists improve potency, selectivity, and drug-like properties together, guided by structure and by measured data on every new analog.</p>
+          <span class="deliverable">→ Optimized lead</span>
+        </li>
+        <li class="stage" style="--fill: 100%">
+          <span class="node" aria-hidden="true"></span>
+          <h3>Candidate selection</h3>
+          <p>A molecule becomes a development candidate when its efficacy, exposure, and safety data make a convincing case for the clinic.</p>
+          <span class="deliverable">→ Development candidate</span>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <section class="section" id="science">
+    <div class="wrap science-grid">
+      <div class="science-copy">
+        <p class="eyebrow">Science</p>
+        <h2>Most programs fail late. We work to find out early.</h2>
+        <p>A single-concentration screen finds starting points. A full dose–response curve tells us whether a compound is worth pursuing. We measure the properties that end programs as early as we can, so our effort goes to molecules with a real chance in the clinic.</p>
+        <dl class="measures">
+          <div><dt>Potency</dt><dd>IC₅₀ and EC₅₀ in biochemical and cellular assays</dd></div>
+          <div><dt>Selectivity</dt><dd>Counter-screens against related targets and a broad safety panel</dd></div>
+          <div><dt>Exposure</dt><dd>ADME and pharmacokinetics from the earliest analogs</dd></div>
+          <div><dt>Safety</dt><dd>In vitro toxicity flags before any in vivo study</dd></div>
+        </dl>
+      </div>
+      <figure class="curve-card">
+        <div class="legend">
+          <span class="key"><i aria-hidden="true"></i><b>Target</b> <span id="lg-target">IC₅₀ 40 nM</span></span>
+          <span class="key"><i class="off" aria-hidden="true"></i><b>Off-target</b> <span id="lg-off">IC₅₀ 6.3 µM</span></span>
+        </div>
+        <svg id="curve" role="img" aria-label="Illustrative dose–response curves for a target and an off-target"></svg>
+        <figcaption>Illustrative data. The horizontal gap between the two curves at 50% inhibition is the selectivity window: how much more compound it takes to hit the off-target.</figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="section band" id="regenerative">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow">Regenerative medicine</p>
+        <h2>Mesenchymal stem cells, measured like medicines.</h2>
+        <p class="section-lede">Mesenchymal stem cells (MSCs) are adult stromal cells found in bone marrow, fat, and umbilical cord tissue. They can calm harmful inflammation and help damaged tissue recover, mostly through the signals they release. Our regenerative medicine program develops MSC therapies with the same standards of evidence we apply to drug discovery.</p>
+      </header>
+
+      <div class="msc-grid">
+        <div class="msc-copy">
+          <h3>How MSCs work</h3>
+          <dl class="measures">
+            <div><dt>Immune balance</dt><dd>MSCs damp overactive T-cell and macrophage responses through mediators such as PGE₂, IDO, and TGF-β.</dd></div>
+            <div><dt>Tissue repair</dt><dd>Growth factors and extracellular vesicles released by MSCs can support new blood vessel growth and help injured cells survive.</dd></div>
+            <div><dt>Differentiation</dt><dd>In culture, MSCs can become bone, cartilage, and fat cells. This is one of the defining tests of MSC identity.</dd></div>
+          </dl>
+          <p>Every lot we make is tested for identity, viability, sterility, and potency before it is used in a study.</p>
+        </div>
+
+        <figure class="panel-card">
+          <div class="panel-head">
+            <span class="panel-title">Identity panel</span>
+            <span class="panel-sub">Example lot · flow cytometry</span>
+          </div>
+          <div class="markers">
+            <div class="mk-group" style="--t: 95">
+              <div class="mk-group-label"><span>Positive markers · ≥95% of cells</span><span class="pass">Pass</span></div>
+              <div class="mk" style="--v: 99.1"><span class="mk-name">CD73</span><span class="mk-track"><i></i></span><span class="mk-val">99.1%</span></div>
+              <div class="mk" style="--v: 98.6"><span class="mk-name">CD90</span><span class="mk-track"><i></i></span><span class="mk-val">98.6%</span></div>
+              <div class="mk" style="--v: 97.8"><span class="mk-name">CD105</span><span class="mk-track"><i></i></span><span class="mk-val">97.8%</span></div>
+            </div>
+            <div class="mk-group" style="--t: 2">
+              <div class="mk-group-label"><span>Negative markers · ≤2% of cells</span><span class="pass">Pass</span></div>
+              <div class="mk" style="--v: 0.4"><span class="mk-name">CD45</span><span class="mk-track"><i></i></span><span class="mk-val">0.4%</span></div>
+              <div class="mk" style="--v: 0.7"><span class="mk-name">CD34</span><span class="mk-track"><i></i></span><span class="mk-val">0.7%</span></div>
+              <div class="mk" style="--v: 0.3"><span class="mk-name">CD14</span><span class="mk-track"><i></i></span><span class="mk-val">0.3%</span></div>
+              <div class="mk" style="--v: 0.2"><span class="mk-name">CD19</span><span class="mk-track"><i></i></span><span class="mk-val">0.2%</span></div>
+              <div class="mk" style="--v: 0.9"><span class="mk-name">HLA-DR</span><span class="mk-track"><i></i></span><span class="mk-val">0.9%</span></div>
+            </div>
+            <div class="mk-axis" aria-hidden="true"><span></span><span class="ticks"><span>0</span><span>50</span><span>100%</span></span><span></span></div>
+          </div>
+          <figcaption>Release thresholds (dark ticks) follow the ISCT minimal criteria for MSCs: plastic adherence, CD73, CD90, and CD105 on at least 95% of cells, CD45, CD34, CD14 or CD11b, CD79α or CD19, and HLA-DR on no more than 2%, and tri-lineage differentiation. Values shown are illustrative.</figcaption>
+        </figure>
+      </div>
+
+      <div class="lineage">
+        <div class="lineage-head">
+          <h3>Tri-lineage potential</h3>
+          <p>Each lot is induced toward bone, fat, and cartilage, then stained to confirm the result. Shown here as illustrations of typical staining.</p>
+        </div>
+        <ul class="dishes">
+          <li>
+            <div class="dish"><canvas data-stain="alizarin" role="img" aria-label="Illustration of osteogenic culture stained red with Alizarin Red S"></canvas></div>
+            <div class="dish-label"><strong>Bone</strong><span>Alizarin Red S · calcium deposits</span></div>
+          </li>
+          <li>
+            <div class="dish"><canvas data-stain="oilred" role="img" aria-label="Illustration of adipogenic culture with red lipid droplets stained by Oil Red O"></canvas></div>
+            <div class="dish-label"><strong>Fat</strong><span>Oil Red O · lipid droplets</span></div>
+          </li>
+          <li>
+            <div class="dish"><canvas data-stain="alcian" role="img" aria-label="Illustration of chondrogenic culture with blue matrix stained by Alcian Blue"></canvas></div>
+            <div class="dish-label"><strong>Cartilage</strong><span>Alcian Blue · proteoglycan matrix</span></div>
+          </li>
+        </ul>
+      </div>
+
+      <p class="note"><strong>Investigational.</strong> Our MSC therapies are in development and have not been approved by the FDA or any other regulator. We do not provide them as treatments outside of authorized clinical studies.</p>
+    </div>
+  </section>
+
+  <!-- Pipeline: replace these programs with your own. Set --stage from 1 to 4, matching the column headers of each group. -->
+  <section class="section" id="pipeline">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow">Pipeline</p>
+        <h2>Programs where patients need more options.</h2>
+        <p class="section-lede">Our programs are at different stages of discovery and development. We update this page as they reach new milestones.</p>
+      </header>
+      <div class="pipeline-wrap">
+        <h3 class="pl-group">Drug discovery <span>3 programs</span></h3>
+        <div class="pl-head" aria-hidden="true">
+          <span>Program</span>
+          <span>Area</span>
+          <span class="pl-phases"><span>Discovery</span><span>Lead optimization</span><span>IND-enabling</span><span>Phase 1</span></span>
+        </div>
+        <ol class="pipeline">
+          <li class="program" style="--stage: 3">
+            <span class="code">DB-101</span>
+            <div class="area"><h4>Oncology</h4><p>Solid tumors</p></div>
+            <div class="track-cell">
+              <div class="track"><span class="bar"></span></div>
+              <span class="stage-name">IND-enabling</span>
+            </div>
+          </li>
+          <li class="program" style="--stage: 2">
+            <span class="code">DB-204</span>
+            <div class="area"><h4>Immunology</h4><p>Autoimmune and inflammatory disease</p></div>
+            <div class="track-cell">
+              <div class="track"><span class="bar"></span></div>
+              <span class="stage-name">Lead optimization</span>
+            </div>
+          </li>
+          <li class="program" style="--stage: 1">
+            <span class="code">DB-312</span>
+            <div class="area"><h4>Neuroscience</h4><p>Neurodegenerative disease</p></div>
+            <div class="track-cell">
+              <div class="track"><span class="bar"></span></div>
+              <span class="stage-name">Discovery</span>
+            </div>
+          </li>
+        </ol>
+
+        <h3 class="pl-group">Cell therapy <span>Mesenchymal stem cells · 1 program</span></h3>
+        <div class="pl-head" aria-hidden="true">
+          <span>Program</span>
+          <span>Area</span>
+          <span class="pl-phases"><span>Process development</span><span>Preclinical</span><span>IND-enabling</span><span>Phase 1</span></span>
+        </div>
+        <ol class="pipeline">
+          <li class="program" style="--stage: 2">
+            <span class="code">DBM-101</span>
+            <div class="area"><h4>Musculoskeletal</h4><p>Knee osteoarthritis</p></div>
+            <div class="track-cell">
+              <div class="track"><span class="bar"></span></div>
+              <span class="stage-name">Preclinical</span>
+            </div>
+          </li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="section band" id="partner">
+    <div class="wrap">
+      <header class="section-head">
+        <p class="eyebrow">Partnering</p>
+        <h2>Bring us a target, a molecule, or a hard question.</h2>
+        <p class="section-lede">We work with companies, academic groups, and investors who care about rigorous science.</p>
+      </header>
+      <div class="partner-grid">
+        <div class="partner">
+          <h3>Pharma and biotech</h3>
+          <p>Licensing and co-development for programs from lead optimization onward. We share data early and in full.</p>
+        </div>
+        <div class="partner">
+          <h3>Academic labs</h3>
+          <p>Collaborations that turn well-validated biology into drug discovery programs, with clear terms on publication and IP from the start.</p>
+        </div>
+        <div class="partner">
+          <h3>Investors</h3>
+          <p>We're glad to walk through our programs, data, and plans in detail with investors who know the field.</p>
+        </div>
+      </div>
+      <div class="partner-cta">
+        <a class="btn btn-primary" href="#contact">Start a conversation <span class="arrow" aria-hidden="true">→</span></a>
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="careers">
+    <div class="wrap careers-grid">
+      <div class="careers-copy">
+        <p class="eyebrow">Careers</p>
+        <h2>Join the lab.</h2>
+        <p>We're building a team of chemists and biologists who like hard problems and clear data. We hire across discovery, from the first assay to the candidate package.</p>
+      </div>
+      <div class="careers-side">
+        <ul class="roles" aria-label="Areas we hire in">
+          <li>Medicinal chemistry</li>
+          <li>Assay biology</li>
+          <li>Structural biology</li>
+          <li>Computational chemistry</li>
+          <li>DMPK</li>
+          <li>In vivo pharmacology</li>
+        </ul>
+        <p>Send a CV and a short note about work you're proud of to <a class="inline-email" href="mailto:dharbiosciences@gmail.com">dharbiosciences@gmail.com</a>.</p>
+      </div>
+    </div>
+  </section>
+</main>
+
+<div class="on-dark">
+  <section class="contact" id="contact">
+    <div class="wrap">
+      <p class="eyebrow">Contact</p>
+      <h2>Talk to us.</h2>
+      <p class="contact-lede">One inbox for partnering, collaborations, careers, and press.</p>
+      <div class="email-row">
+        <a class="email" id="email" href="mailto:dharbiosciences@gmail.com">dharbiosciences@gmail.com</a>
+        <button class="copy" id="copy" type="button">Copy address</button>
+        <span class="copy-status" id="copy-status" aria-live="polite"></span>
+      </div>
+    </div>
+  </section>
+  <footer class="site-foot">
+    <div class="wrap foot-row">
+      <a class="brand" href="#top" aria-label="Dhar Biosciences, back to top">
+        <img class="logo" src="assets/db-logo.jpg" alt="" width="32" height="32">
+        <span class="wordmark"><b>Dhar</b> <span>Biosciences</span></span>
+      </a>
+      <nav class="foot-nav" aria-label="Footer">
+        <a href="#approach">Approach</a>
+        <a href="#science">Science</a>
+        <a href="#regenerative">Cell therapy</a>
+        <a href="#pipeline">Pipeline</a>
+        <a href="#partner">Partnering</a>
+        <a href="#careers">Careers</a>
+      </nav>
+      <p class="copyright">© 2026 Dhar Biosciences</p>
+    </div>
+  </footer>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+  /* ---------- Header: scrolled state + mobile menu ---------- */
+  var head = document.getElementById("head");
+  var menuBtn = document.getElementById("menu-btn");
+  function onScroll() { head.classList.toggle("scrolled", window.scrollY > 8); }
+  window.addEventListener("scroll", onScroll, { passive: true });
+  onScroll();
+  function setMenu(open) {
+    head.classList.toggle("open", open);
+    menuBtn.setAttribute("aria-expanded", String(open));
+    menuBtn.textContent = open ? "Close" : "Menu";
+  }
+  menuBtn.addEventListener("click", function () { setMenu(!head.classList.contains("open")); });
+  document.getElementById("site-nav").addEventListener("click", function (e) {
+    if (e.target.closest("a")) setMenu(false);
+  });
+  document.addEventListener("keydown", function (e) { if (e.key === "Escape") setMenu(false); });
+
+  /* ---------- Screening plate ---------- */
+  var canvas = document.getElementById("plate");
+  var stage = document.getElementById("plate-stage");
+  var tip = document.getElementById("plate-tip");
+  var runBtn = document.getElementById("plate-run");
+  var ctx = canvas.getContext("2d");
+  var ROWS = "ABCDEFGHIJKLMNOP";
+  var HIT = 50;
+  var VIRIDIS = [[68,1,84],[72,40,120],[62,74,137],[49,104,142],[38,130,142],[31,158,137],[53,183,121],[109,205,89],[180,222,44],[253,231,37]];
+  var FORMATS = {
+    w384: { rows: 16, cols: 24, name: "384-well", ctrl: [0, 1, 22, 23] },
+    w96:  { rows: 8,  cols: 12, name: "96-well",  ctrl: [0, 11] }
+  };
+  var seed = 5, fmt = null, current = null, previous = null, geo = null;
+  var sweep = -1, hover = null, animating = false;
+
+  function viridis(t) {
+    t = Math.max(0, Math.min(1, t)) * (VIRIDIS.length - 1);
+    var i = Math.min(Math.floor(t), VIRIDIS.length - 2), f = t - i, a = VIRIDIS[i], b = VIRIDIS[i + 1];
+    return "rgb(" + Math.round(a[0] + (b[0] - a[0]) * f) + "," + Math.round(a[1] + (b[1] - a[1]) * f) + "," + Math.round(a[2] + (b[2] - a[2]) * f) + ")";
+  }
+  function mulberry32(a) {
+    return function () {
+      a |= 0; a = a + 0x6D2B79F5 | 0;
+      var t = Math.imul(a ^ a >>> 15, 1 | a);
+      t = t + Math.imul(t ^ t >>> 7, 61 | t) ^ t;
+      return ((t ^ t >>> 14) >>> 0) / 4294967296;
+    };
+  }
+  function mean(a) { return a.reduce(function (s, x) { return s + x; }, 0) / a.length; }
+  function sd(a) { var m = mean(a); return Math.sqrt(a.reduce(function (s, x) { return s + (x - m) * (x - m); }, 0) / (a.length - 1)); }
+
+  function makePlate(s, f) {
+    var rand = mulberry32(s * 7919 + f.cols);
+    function gauss() { var u = 0; while (u === 0) u = rand(); return Math.sqrt(-2 * Math.log(u)) * Math.cos(2 * Math.PI * rand()); }
+    var wells = [], pos = [], neg = [], hits = 0, samples = 0;
+    for (var r = 0; r < f.rows; r++) {
+      var row = [];
+      for (var c = 0; c < f.cols; c++) {
+        var kind, v;
+        if (f.ctrl.indexOf(c) !== -1) {
+          kind = (r + c) % 2 === 0 ? "pos" : "neg";
+          v = kind === "pos" ? 96 + gauss() * 2.4 : 1 + gauss() * 3;
+          (kind === "pos" ? pos : neg).push(v);
+        } else {
+          var p = rand();
+          if (p < 0.018) v = 64 + rand() * 34;
+          else if (p < 0.05) v = 24 + rand() * 32;
+          else v = 3 + gauss() * 6;
+          kind = v >= HIT ? "hit" : "sample";
+          samples++;
+          if (kind === "hit") hits++;
+        }
+        row.push({ kind: kind, v: v });
+      }
+      wells.push(row);
+    }
+    var z = 1 - 3 * (sd(pos) + sd(neg)) / Math.abs(mean(pos) - mean(neg));
+    return { wells: wells, hits: hits, samples: samples, z: z };
+  }
+
+  function cssVar(name) { return getComputedStyle(document.documentElement).getPropertyValue(name).trim(); }
+  function pad2(n) { return n < 10 ? "0" + n : String(n); }
+  function wellId(r, c) { return ROWS[r] + pad2(c + 1); }
+
+  function updateMeta() {
+    document.getElementById("plate-id").textContent = "Plate " + pad2(seed);
+    document.getElementById("plate-format").textContent = fmt.name + " primary screen · 10 µM";
+  }
+  function updateStats() {
+    document.getElementById("s-hits").textContent = current.hits;
+    document.getElementById("s-rate").textContent = (current.hits / current.samples * 100).toFixed(1) + "%";
+    document.getElementById("s-z").textContent = current.z.toFixed(2);
+    canvas.setAttribute("aria-label", "Simulated " + fmt.name + " screening plate heatmap: " + current.hits + " hits among " + current.samples + " compound wells, Z′ " + current.z.toFixed(2) + ".");
+  }
+
+  function layout() {
+    var w = stage.clientWidth;
+    if (!w) return;
+    var f = w < 520 ? FORMATS.w96 : FORMATS.w384;
+    if (!fmt || fmt !== f) {
+      fmt = f;
+      current = makePlate(seed, fmt);
+      previous = null;
+      hover = null;
+      tip.hidden = true;
+      updateMeta();
+      updateStats();
+    }
+    var label = Math.max(16, Math.min(24, w / (fmt.cols + 1)));
+    var cell = (w - label) / fmt.cols;
+    var h = Math.ceil(label + cell * fmt.rows + 2);
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    geo = { w: w, h: h, label: label, cell: cell };
+    canvas.style.height = h + "px";
+    canvas.width = Math.round(w * dpr);
+    canvas.height = Math.round(h * dpr);
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    draw();
+  }
+
+  function draw() {
+    if (!geo) return;
+    var w = geo.w, h = geo.h, L = geo.label, cell = geo.cell;
+    var fg = cssVar("--instrument-fg"), muted = cssVar("--instrument-muted"), line = cssVar("--instrument-line"), hitColor = cssVar("--hit");
+    ctx.clearRect(0, 0, w, h);
+
+    var fs = Math.max(9, Math.min(12, cell * 0.44));
+    ctx.font = "500 " + fs + "px 'IBM Plex Mono', ui-monospace, monospace";
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    for (var c = 0; c < fmt.cols; c++) {
+      ctx.fillStyle = hover && hover.c === c ? fg : muted;
+      ctx.fillText(String(c + 1), L + cell * (c + 0.5), L * 0.45);
+    }
+    for (var r = 0; r < fmt.rows; r++) {
+      ctx.fillStyle = hover && hover.r === r ? fg : muted;
+      ctx.fillText(ROWS[r], L * 0.42, L + cell * (r + 0.5));
+    }
+
+    // Dashed rules between control columns and compound columns
+    ctx.save();
+    ctx.strokeStyle = line;
+    ctx.lineWidth = 1;
+    ctx.setLineDash([3, 3]);
+    for (c = 0; c < fmt.cols - 1; c++) {
+      var a = fmt.ctrl.indexOf(c) !== -1, b = fmt.ctrl.indexOf(c + 1) !== -1;
+      if (a !== b) {
+        var x = Math.round(L + cell * (c + 1)) + 0.5;
+        ctx.beginPath(); ctx.moveTo(x, L - 2); ctx.lineTo(x, L + cell * fmt.rows + 1); ctx.stroke();
+      }
+    }
+    ctx.restore();
+
+    var rad = cell * 0.35;
+    for (r = 0; r < fmt.rows; r++) {
+      for (c = 0; c < fmt.cols; c++) {
+        var src = previous && sweep >= 0 && (c + 0.5) > sweep ? previous : current;
+        var well = src.wells[r][c];
+        var cx = L + cell * (c + 0.5), cy = L + cell * (r + 0.5);
+        ctx.beginPath();
+        ctx.arc(cx, cy, rad + Math.max(1.2, cell * 0.07), 0, Math.PI * 2);
+        ctx.strokeStyle = line;
+        ctx.lineWidth = 1;
+        ctx.stroke();
+        ctx.beginPath();
+        ctx.arc(cx, cy, rad, 0, Math.PI * 2);
+        ctx.fillStyle = viridis(well.v / 100);
+        ctx.fill();
+        if (well.kind === "hit") {
+          ctx.beginPath();
+          ctx.arc(cx, cy, rad + Math.max(1.2, cell * 0.07), 0, Math.PI * 2);
+          ctx.strokeStyle = hitColor;
+          ctx.lineWidth = Math.max(1.25, cell * 0.07);
+          ctx.stroke();
+        }
+      }
+    }
+
+    if (hover) {
+      var hx = L + cell * (hover.c + 0.5), hy = L + cell * (hover.r + 0.5);
+      ctx.beginPath();
+      ctx.arc(hx, hy, rad + Math.max(2.5, cell * 0.14), 0, Math.PI * 2);
+      ctx.strokeStyle = fg;
+      ctx.lineWidth = 1.5;
+      ctx.stroke();
+    }
+
+    if (sweep >= 0) {
+      var sx = L + cell * sweep;
+      var g = ctx.createLinearGradient(sx - cell * 2.5, 0, sx, 0);
+      g.addColorStop(0, "rgba(255,255,255,0)");
+      g.addColorStop(1, "rgba(255,255,255,0.16)");
+      ctx.fillStyle = g;
+      ctx.fillRect(sx - cell * 2.5, L - 2, cell * 2.5, cell * fmt.rows + 3);
+      ctx.fillStyle = fg;
+      ctx.fillRect(sx - 0.75, L - 2, 1.5, cell * fmt.rows + 3);
+    }
+  }
+
+  function runSweep(onDone) {
+    if (reduceMotion.matches) { onDone(); return; }
+    animating = true;
+    runBtn.disabled = true;
+    runBtn.textContent = "Reading…";
+    var t0 = performance.now(), dur = 1500, end = fmt.cols + 2.5;
+    function step(now) {
+      var p = Math.min(1, (now - t0) / dur);
+      var e = p < 0.5 ? 2 * p * p : 1 - Math.pow(-2 * p + 2, 2) / 2;
+      sweep = e * end;
+      draw();
+      if (p < 1) { requestAnimationFrame(step); return; }
+      sweep = -1;
+      animating = false;
+      runBtn.disabled = false;
+      runBtn.textContent = "Read new plate";
+      onDone();
+    }
+    requestAnimationFrame(step);
+  }
+
+  runBtn.addEventListener("click", function () {
+    if (animating) return;
+    previous = current;
+    seed += 1;
+    current = makePlate(seed, fmt);
+    updateMeta();
+    runSweep(function () { previous = null; draw(); updateStats(); });
+  });
+
+  function showTip(e) {
+    if (!geo) return;
+    var rect = canvas.getBoundingClientRect();
+    var x = e.clientX - rect.left, y = e.clientY - rect.top;
+    var c = Math.floor((x - geo.label) / geo.cell), r = Math.floor((y - geo.label) / geo.cell);
+    if (c < 0 || r < 0 || c >= fmt.cols || r >= fmt.rows) { hideTip(); return; }
+    if (hover && hover.r === r && hover.c === c) return;
+    hover = { r: r, c: c };
+    var well = current.wells[r][c], v = well.v.toFixed(1) + "%";
+    var text = well.kind === "pos" ? wellId(r, c) + " · Positive control · " + v
+      : well.kind === "neg" ? wellId(r, c) + " · Negative control (DMSO) · " + v
+      : wellId(r, c) + " · " + v + " inhibition" + (well.kind === "hit" ? " · Hit" : "");
+    tip.textContent = text;
+    tip.hidden = false;
+    var cx = geo.label + geo.cell * (c + 0.5), cy = geo.label + geo.cell * (r + 0.5);
+    var half = tip.offsetWidth / 2;
+    tip.style.left = Math.max(half, Math.min(geo.w - half, cx)) + "px";
+    var above = cy - geo.cell / 2 - tip.offsetHeight - 8 >= 0;
+    tip.classList.toggle("below", !above);
+    tip.style.top = (above ? cy - geo.cell / 2 : cy + geo.cell / 2) + "px";
+    if (!animating) draw();
+  }
+  function hideTip() {
+    if (!hover) return;
+    hover = null;
+    tip.hidden = true;
+    if (!animating) draw();
+  }
+  canvas.addEventListener("pointermove", showTip);
+  canvas.addEventListener("pointerdown", showTip);
+  canvas.addEventListener("pointerleave", hideTip);
+
+  /* ---------- Dose–response curve ---------- */
+  var svg = document.getElementById("curve");
+  var TARGET = { logIC50: -7.4, hill: 1.1 };
+  var OFF = { logIC50: -5.2, hill: 0.9 };
+  var NOISE_T = [2.1, -3.0, 1.4, -2.2, 3.1, -2.4, 1.6, -1.1, 2.4, -1.5];
+  var NOISE_O = [-1.2, 1.8, -2.6, 2.2, -1.4, 3.0, -2.1, 1.3, -1.7];
+  function resp(x, p) { return 100 / (1 + Math.pow(10, (p.logIC50 - x) * p.hill)); }
+  function fmtNum(v) { return v >= 10 ? String(Math.round(v)) : String(Math.round(v * 10) / 10); }
+  function fmtConc(log) {
+    var m = Math.pow(10, log);
+    return m >= 1e-6 ? fmtNum(m * 1e6) + " µM" : fmtNum(m * 1e9) + " nM";
+  }
+  var selectivity = Math.round(Math.pow(10, OFF.logIC50 - TARGET.logIC50));
+  document.getElementById("lg-target").textContent = "IC₅₀ " + fmtConc(TARGET.logIC50);
+  document.getElementById("lg-off").textContent = "IC₅₀ " + fmtConc(OFF.logIC50);
+  svg.setAttribute("aria-label", "Illustrative dose–response curves. Target IC₅₀ " + fmtConc(TARGET.logIC50) + ", off-target IC₅₀ " + fmtConc(OFF.logIC50) + ", a " + selectivity + "-fold selectivity window.");
+
+  var lastCurveW = 0;
+  function buildCurve() {
+    var W = Math.round(svg.getBoundingClientRect().width);
+    if (!W || W === lastCurveW) return;
+    lastCurveW = W;
+    var H = Math.round(Math.min(360, Math.max(260, W * 0.66)));
+    var m = { l: 50, r: 26, t: 12, b: 54 };
+    var pw = W - m.l - m.r, ph = H - m.t - m.b;
+    function sx(x) { return m.l + (x + 10) / 6 * pw; }
+    function sy(y) { return m.t + (1 - y / 100) * ph; }
+    var o = [];
+    [0, 25, 50, 75, 100].forEach(function (y) {
+      o.push('<line class="' + (y === 0 ? "axis" : "grid") + '" x1="' + m.l + '" x2="' + (W - m.r) + '" y1="' + sy(y) + '" y2="' + sy(y) + '"/>');
+      o.push('<text class="ax" x="' + (m.l - 10) + '" y="' + sy(y) + '" text-anchor="end" dominant-baseline="middle">' + y + "</text>");
+    });
+    var step = pw / 6 < 66 ? 2 : 1;
+    for (var i = 0; i <= 6; i++) {
+      var lx = sx(-10 + i);
+      o.push('<line class="axis" x1="' + lx + '" x2="' + lx + '" y1="' + sy(0) + '" y2="' + (sy(0) + 5) + '"/>');
+      if (i % step === 0) o.push('<text class="ax" x="' + lx + '" y="' + (sy(0) + 20) + '" text-anchor="middle">' + fmtConc(-10 + i) + "</text>");
+    }
+    o.push('<text class="ax-title" x="' + (m.l + pw / 2) + '" y="' + (H - 6) + '" text-anchor="middle">CONCENTRATION (LOG SCALE)</text>');
+    o.push('<text class="ax-title" x="12" y="' + (m.t + ph / 2) + '" text-anchor="middle" transform="rotate(-90 12 ' + (m.t + ph / 2) + ')">% INHIBITION</text>');
+
+    // IC50 drop lines
+    o.push('<line class="drop-o" x1="' + sx(OFF.logIC50) + '" x2="' + sx(OFF.logIC50) + '" y1="' + sy(50) + '" y2="' + sy(0) + '"/>');
+    o.push('<line class="drop-t" x1="' + sx(TARGET.logIC50) + '" x2="' + sx(TARGET.logIC50) + '" y1="' + sy(50) + '" y2="' + sy(0) + '"/>');
+
+    function curvePath(p) {
+      var d = "";
+      for (var k = 0; k <= 160; k++) {
+        var x = -10 + 6 * k / 160;
+        d += (k ? "L" : "M") + sx(x).toFixed(1) + " " + sy(resp(x, p)).toFixed(1);
+      }
+      return d;
+    }
+    o.push('<path class="c-off" d="' + curvePath(OFF) + '"/>');
+    o.push('<path class="c-target" d="' + curvePath(TARGET) + '"/>');
+
+    // Selectivity window at 50%
+    var x1 = sx(TARGET.logIC50) + 7, x2 = sx(OFF.logIC50) - 7, yw = sy(50);
+    o.push('<line class="win" x1="' + x1 + '" x2="' + x2 + '" y1="' + yw + '" y2="' + yw + '"/>');
+    o.push('<polygon class="win-head" points="' + x1 + "," + yw + " " + (x1 + 7) + "," + (yw - 4) + " " + (x1 + 7) + "," + (yw + 4) + '"/>');
+    o.push('<polygon class="win-head" points="' + x2 + "," + yw + " " + (x2 - 7) + "," + (yw - 4) + " " + (x2 - 7) + "," + (yw + 4) + '"/>');
+    var label = selectivity + "×";
+    var mid = (x1 + x2) / 2;
+    o.push('<rect class="win-bg" x="' + (mid - 22) + '" y="' + (yw - 25) + '" width="44" height="17" rx="3"/>');
+    o.push('<text class="win-label" x="' + mid + '" y="' + (yw - 12) + '" text-anchor="middle">' + label + "</text>");
+
+    // Data points with error bars
+    function points(p, xs, noise, cls) {
+      xs.forEach(function (x, k) {
+        var r = resp(x, p);
+        var y = Math.max(-1, Math.min(101, r + noise[k] * (0.4 + 0.6 * r / 100)));
+        var err = 2.2 + Math.abs(noise[k]) * 0.7;
+        var px = sx(x);
+        o.push('<line class="err-' + cls + '" x1="' + px + '" x2="' + px + '" y1="' + sy(y - err) + '" y2="' + sy(y + err) + '"/>');
+        o.push('<line class="err-' + cls + '" x1="' + (px - 3) + '" x2="' + (px + 3) + '" y1="' + sy(y - err) + '" y2="' + sy(y - err) + '"/>');
+        o.push('<line class="err-' + cls + '" x1="' + (px - 3) + '" x2="' + (px + 3) + '" y1="' + sy(y + err) + '" y2="' + sy(y + err) + '"/>');
+        o.push('<circle class="pt-' + cls + '" cx="' + px + '" cy="' + sy(y) + '" r="4.2"/>');
+      });
+    }
+    var xsT = [], xsO = [];
+    for (i = 0; i < 10; i++) xsT.push(-9.5 + i * 0.5);
+    for (i = 0; i < 9; i++) xsO.push(-8 + i * 0.5);
+    points(OFF, xsO, NOISE_O, "o");
+    points(TARGET, xsT, NOISE_T, "t");
+
+    svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+    svg.style.height = H + "px";
+    svg.innerHTML = o.join("");
+  }
+
+  /* ---------- Copy email ---------- */
+  var copyBtn = document.getElementById("copy");
+  var copyStatus = document.getElementById("copy-status");
+  var emailEl = document.getElementById("email");
+  var copyTimer = 0;
+  copyBtn.addEventListener("click", function () {
+    var text = emailEl.textContent.trim();
+    function fallback() {
+      try {
+        var range = document.createRange();
+        range.selectNodeContents(emailEl);
+        var sel = window.getSelection();
+        sel.removeAllRanges();
+        sel.addRange(range);
+      } catch (err) { /* selection unavailable */ }
+      copyStatus.textContent = "Address selected. Press Ctrl+C to copy.";
+    }
+    try {
+      navigator.clipboard.writeText(text).then(function () {
+        copyStatus.textContent = "Copied to clipboard";
+      }, fallback);
+    } catch (err) { fallback(); }
+    clearTimeout(copyTimer);
+    copyTimer = setTimeout(function () { copyStatus.textContent = ""; }, 3200);
+  });
+
+  /* ---------- Tri-lineage dishes (stylized brightfield illustrations) ---------- */
+  var dishes = Array.prototype.slice.call(document.querySelectorAll("canvas[data-stain]"));
+  var STAINS = {
+    alizarin: { bg: "#EEE7E2", cells: "#C9B3AA", seed: 11 },
+    oilred:   { bg: "#EFEAE6", cells: "#CDB9B2", seed: 23 },
+    alcian:   { bg: "#E8EDF1", cells: "#9FB3C4", seed: 37 }
+  };
+  function drawDish(cv) {
+    var size = Math.round(cv.getBoundingClientRect().width);
+    if (!size || String(size) === cv.dataset.size) return;
+    cv.dataset.size = String(size);
+    var dpr = Math.min(window.devicePixelRatio || 1, 2);
+    cv.width = Math.round(size * dpr);
+    cv.height = Math.round(size * dpr);
+    var g = cv.getContext("2d");
+    g.setTransform(dpr, 0, 0, dpr, 0, 0);
+    var kind = cv.dataset.stain, st = STAINS[kind];
+    var rand = mulberry32(st.seed);
+    var R = size / 2, s = size / 240, i, k;
+    function ell(x, y, rx, ry, rot, color, alpha) {
+      g.globalAlpha = alpha;
+      g.fillStyle = color;
+      g.beginPath();
+      g.ellipse(x, y, rx, ry, rot, 0, Math.PI * 2);
+      g.fill();
+    }
+    g.clearRect(0, 0, size, size);
+    g.save();
+    g.beginPath();
+    g.arc(R, R, R, 0, Math.PI * 2);
+    g.clip();
+    g.fillStyle = st.bg;
+    g.fillRect(0, 0, size, size);
+    // Faint spindle-shaped stromal cells in every field
+    for (i = 0; i < 70; i++) ell(rand() * size, rand() * size, (10 + rand() * 16) * s, (2 + rand() * 3) * s, rand() * Math.PI, st.cells, 0.35);
+
+    if (kind === "alizarin") {
+      // Mineralized nodules
+      for (i = 0; i < 9; i++) {
+        var cx = rand() * size, cy = rand() * size, rr = (14 + rand() * 22) * s;
+        for (k = 0; k < 26; k++) {
+          var a = rand() * Math.PI * 2, d = Math.pow(rand(), 0.7) * rr;
+          ell(cx + Math.cos(a) * d, cy + Math.sin(a) * d, (3 + rand() * 7) * s, (3 + rand() * 6) * s, rand() * Math.PI, k % 3 ? "#C2342B" : "#8E1A1F", 0.55 + rand() * 0.35);
+        }
+      }
+      for (i = 0; i < 120; i++) { var sp = (0.8 + rand() * 1.8) * s; ell(rand() * size, rand() * size, sp, sp, 0, "#B0282A", 0.6); }
+    } else if (kind === "oilred") {
+      // Adipocytes: hematoxylin nucleus ringed by lipid droplets
+      for (i = 0; i < 22; i++) {
+        var ox = rand() * size, oy = rand() * size;
+        ell(ox, oy, (14 + rand() * 6) * s, (11 + rand() * 5) * s, rand() * Math.PI, "#E3CFC9", 0.6);
+        ell(ox + (rand() - 0.5) * 6 * s, oy + (rand() - 0.5) * 6 * s, 4 * s, 3 * s, rand() * Math.PI, "#4E4C93", 0.75);
+        var n = 8 + Math.floor(rand() * 14);
+        for (k = 0; k < n; k++) {
+          var a2 = rand() * Math.PI * 2, d2 = (5 + rand() * 11) * s, rd = (1.6 + rand() * 3.6) * s;
+          var dx = ox + Math.cos(a2) * d2, dy = oy + Math.sin(a2) * d2;
+          ell(dx, dy, rd, rd, 0, "#C3262F", 0.9);
+          ell(dx - rd * 0.35, dy - rd * 0.35, rd * 0.35, rd * 0.35, 0, "#F3A3A0", 0.8);
+        }
+      }
+    } else {
+      // Chondrogenic nodules: blue proteoglycan matrix with cells in lacunae
+      for (i = 0; i < 4; i++) {
+        var bx = R + (rand() - 0.5) * size * 0.7, by = R + (rand() - 0.5) * size * 0.7, br = (40 + rand() * 30) * s;
+        for (k = 0; k < 90; k++) {
+          var a3 = rand() * Math.PI * 2, d3 = Math.pow(rand(), 0.6) * br;
+          ell(bx + Math.cos(a3) * d3, by + Math.sin(a3) * d3, (6 + rand() * 12) * s, (5 + rand() * 10) * s, rand() * Math.PI, k % 4 ? "#2F6EA6" : "#1D4F86", 0.22);
+        }
+        for (k = 0; k < 22; k++) {
+          var a4 = rand() * Math.PI * 2, d4 = Math.pow(rand(), 0.8) * br * 0.85;
+          var lx = bx + Math.cos(a4) * d4, ly = by + Math.sin(a4) * d4;
+          ell(lx, ly, 4.2 * s, 3.2 * s, rand() * Math.PI, "#E6EDF3", 0.85);
+          ell(lx, ly, 1.8 * s, 1.5 * s, 0, "#3B356B", 0.8);
+        }
+      }
+    }
+    g.globalAlpha = 1;
+    // Microscope field vignette
+    var vg = g.createRadialGradient(R, R, R * 0.55, R, R, R);
+    vg.addColorStop(0, "rgba(40,30,40,0)");
+    vg.addColorStop(1, "rgba(40,30,40,0.28)");
+    g.fillStyle = vg;
+    g.fillRect(0, 0, size, size);
+    g.restore();
+  }
+
+  /* ---------- Boot ---------- */
+  layout();
+  buildCurve();
+  dishes.forEach(drawDish);
+  var queued = false;
+  function onResize() {
+    if (queued) return;
+    queued = true;
+    requestAnimationFrame(function () {
+      queued = false;
+      if (!geo || stage.clientWidth !== geo.w) layout();
+      buildCurve();
+      dishes.forEach(drawDish);
+    });
+  }
+  if ("ResizeObserver" in window) {
+    new ResizeObserver(onResize).observe(stage);
+    new ResizeObserver(onResize).observe(svg.parentElement);
+    var dishList = document.querySelector(".dishes");
+    if (dishList) new ResizeObserver(onResize).observe(dishList);
+  } else {
+    window.addEventListener("resize", onResize);
+  }
+  var redraw = function () { draw(); };
+  window.matchMedia("(prefers-color-scheme: dark)").addEventListener("change", redraw);
+  new MutationObserver(redraw).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(function () { draw(); lastCurveW = 0; buildCurve(); });
+  }
+  // Opening read: the plate is fully drawn at rest; the reader head passes over it once.
+  setTimeout(function () {
+    if (!animating && !reduceMotion.matches) { previous = current; runSweep(function () { previous = null; draw(); }); }
+  }, 500);
+})();
+</script>
