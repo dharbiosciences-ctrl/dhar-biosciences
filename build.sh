@@ -6,7 +6,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 OUT=docs
-DOMAIN=dharbioscience.com
+DOMAIN=dharbiosciences.com
 
 rm -rf "$OUT"
 mkdir -p "$OUT/assets"
